@@ -6,6 +6,11 @@
 #SBATCH --mem-per-cpu=8G   # memory per CPU core
 #SBATCH --error="r_studio.err"   # error log
 
+# File       : start_rstudio.sh
+# Created    : Sat Mar 2 2024 10:03:57 AM
+# Author     : Renhao Luo
+# Description: Start Rstudio Server
+# Copyright 2024 The Scripps Research Institute. All Rights Reserved.
 
 # modified from https://www.rocker-project.org/use/singularity/
 
@@ -19,7 +24,7 @@ echo "ssh -L 8787:${HOSTNAME}:${PORT} ${USER}@login03"
 echo "user: ${USER}"
 echo "password: ${PASSWORD}"
 
-cat >> ${HOME}/rstudio-hpc/log.txt << END
+cat >> ${HOME}/scripps_hpc_rstudio/log.txt << END
 
 --- `date` ---
 1. SSH tunnel from your workstation using the following command:
@@ -82,7 +87,7 @@ singularity exec \
    --bind="$TMPDIR/var/lib:/var/lib/rstudio-server" \
    --bind="$TMPDIR/var/run:/var/run/rstudio-server" \
    --bind="$TMPDIR/tmp:/tmp" \
-   ${HOME}/rstudio-hpc/rstudio-hpc-v3.sif bash -c "\
+   ${HOME}/scripps_hpc_rstudio/rstudio-hpc-v3.sif bash -c "\
    rserver --www-port ${PORT} --auth-none=0 --auth-pam-helper-path=pam-helper \
    --auth-timeout-minutes=0 --auth-stay-signed-in-days=30 --server-user ${USER} \
    --secure-cookie-key-file ${HOME}/tmp/rstudio-server/${USER}_secure-cookie-key \
