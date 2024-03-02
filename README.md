@@ -1,6 +1,7 @@
 # scripps_hpc_rstudio
 Setting up Rstuido Server on the Scripps Research HPC
 
+Desgined for users do not have root access in a HPC.
 ## Rationale: 
 - Create a shared R environment
 - Take the advantage of the resources of HPC for large data analysis (high RAM, high CPU)
