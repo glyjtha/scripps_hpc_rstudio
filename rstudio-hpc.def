@@ -9,8 +9,10 @@ From: rocker/tidyverse:4.3.1
     openssh-server libglpk-dev libhdf5-dev patch
 
     # e.g. install ggtree
-    R -e 'if (!requireNamespace("BiocManager", quietly = TRUE)) install.packages("BiocManager"); BiocManager::install(c("ggtree", "Seurat"))'
+    R -e 'if (!requireNamespace("BiocManager", quietly = TRUE)) install.packages("BiocManager"); BiocManager::install(c("ggtree", "ComplexHeatmap", "BiocNeighbors"))'
     R -e 'install.packages("hdf5r")'
+    R -e 'install.packages("ggpubr")'
+    R -e 'install.packages("Seurat")'
     
     # function to add host machine commands using to continer using ssh
     # https://groups.google.com/a/lbl.gov/forum/#!topic/singularity/syLcsIWWzdo
