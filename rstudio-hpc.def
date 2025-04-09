@@ -96,6 +96,6 @@ From: rocker/tidyverse:4.3.1
     # add env vars
 
 %labels
-    Author Renhao Luo
-    Version v1.0
-    Name rstudio_hpc
+    Author Juntong Ye
+    Version v2.0
+    Name modified_rstudio_hpc
