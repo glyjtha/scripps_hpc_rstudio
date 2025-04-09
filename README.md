@@ -1,4 +1,6 @@
 # scripps_hpc_rstudio
+This project is based on (https://github.com/RenhaoL/scripps_hpc_rstudio.git).
+
 Setting up Rstuido Server on the Scripps Research HPC
 
 Desgined for users do not have root access in a HPC.
@@ -32,3 +34,12 @@ If you have trouble to build the singularity image, you could copy from my repos
 
 ## Additional package
 If you need to install additional R library for your Rstudio, try to install the library in your Rstudio first. If got errors, you could modify the `rstudio-hpc.def` file and rebuild the image. 
+
+## Changes Made
+Modify `rstudio-hpc.def` for additional package
+- Installed additional system libraries (e.g., zlib1g-dev, libssl-dev, build-essential) to support compilation of R packages from source.
+- Switched from basic `apt-get install` to a more complete dependency list, ensuring compatibility for packages for `Seurat`, and `Signac`.
+- Used BiocManager to install bioinformatics packages: `GenomeInfoDb`, `GenomicRanges`, `Rsamtools`, etc.
+- Using `SeuratObject` version 5.0.0
+- Added `devtools::install_version()` to pin `Signac` to version 1.8.0.
+- Added cleanup commands (`apt-get clean && rm -rf`) to reduce final image size.
