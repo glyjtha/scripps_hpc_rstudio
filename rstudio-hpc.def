@@ -1,18 +1,25 @@
-BootStrap: docker
+Bootstrap: docker
 From: rocker/tidyverse:4.3.1
 
 # https://sylabs.io/guides/3.5/user-guide/definition_files.html
 
 %post -c /bin/bash
     # install packages 
-    apt-get update -qq && apt-get -y --no-install-recommends install \
-    openssh-server libglpk-dev libhdf5-dev patch
+apt-get update -qq && \
+apt-get install -y --no-install-recommends \
+    build-essential \
+    libbz2-dev liblzma-dev zlib1g-dev \
+    libcurl4-openssl-dev libssl-dev libxml2-dev \
+    libhdf5-dev libglpk-dev patch openssh-server && \
+apt-get clean && rm -rf /var/lib/apt/lists/*
 
     # e.g. install ggtree
-    R -e 'if (!requireNamespace("BiocManager", quietly = TRUE)) install.packages("BiocManager"); BiocManager::install(c("ggtree", "ComplexHeatmap", "BiocNeighbors"))'
-    R -e 'install.packages("hdf5r")'
-    R -e 'install.packages("ggpubr")'
+    R -e 'if (!requireNamespace("BiocManager", quietly=TRUE)) install.packages("BiocManager")'
+    R -e 'BiocManager::install(c("GenomeInfoDb","GenomicRanges","Rhtslib","Rsamtools"), ask=FALSE, update=FALSE)'
+    R -e 'install.packages(c("hdf5r","ggpubr"), repos="https://cloud.r-project.org")'
     R -e 'install.packages("Seurat")'
+    R -e 'install.packages("SeuratObject")'
+    R -e 'if (!requireNamespace("devtools", quietly = TRUE)) install.packages("devtools"); devtools::install_version(package = "Signac", version = package_version("1.8.0"))'
     
     # function to add host machine commands using to continer using ssh
     # https://groups.google.com/a/lbl.gov/forum/#!topic/singularity/syLcsIWWzdo
