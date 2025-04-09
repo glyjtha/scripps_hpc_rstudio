@@ -40,6 +40,6 @@ Modify `rstudio-hpc.def` for additional package
 - Installed additional system libraries (e.g., zlib1g-dev, libssl-dev, build-essential) to support compilation of R packages from source.
 - Switched from basic `apt-get install` to a more complete dependency list, ensuring compatibility for packages for `Seurat`, and `Signac`.
 - Used BiocManager to install bioinformatics packages: `GenomeInfoDb`, `GenomicRanges`, `Rsamtools`, etc.
-- Using `SeuratObject` version 5.0.0
+- Used `SeuratObject` version 5.0.0
 - Added `devtools::install_version()` to pin `Signac` to version 1.8.0.
 - Added cleanup commands (`apt-get clean && rm -rf`) to reduce final image size.
