@@ -16,8 +16,12 @@ Create a Singularity image containing Rstudio Server and all required R librarie
 ### Option 1
 1. `git clone` this repository to your HPC directory. 
 2. Create an online account with [Sylabs](https://sylabs.io/), and generate a personal token. (Usually good for a month)
-3. In HPC, run `singularity remote login`, and enter your username and personal token. 
-4. Run the command `singularity build rstudio-hpc-v3.sif rstudio-hpc.def` to build image (Re-run this command if modified .def)
+3. In HPC, run `singularity remote login`, and enter your username and personal token.   
+   - If FATAl error run:
+   - `singularity remote add sylabs-cloud cloud.sylabs.io`
+   - `singularity remote use sylabs-cloud`
+   - `singularity remote login`
+5. Run the command `singularity build rstudio-hpc-v3.sif rstudio-hpc.def` to build image (Re-run this command if modified .def)
 6. `sbatch start_rstudio.sh` to submit the job to a computing node. 
     - Note, modify the `#SBATCH` tags to request different number of CPUs and RAMs.
 7. Check the `log.txt` file using `less log.txt` for tunnel access information and the username/password.
