@@ -31,7 +31,7 @@ Create a Singularity image containing Rstudio Server and all required R librarie
 11. Login with the password given from `log.txt`
 
 ## Additional packages
-If you need to install additional R library for your Rstudio, try to install the library in your Rstudio first. If got errors, you could modify the `rstudio-hpc.def` file and rebuild the image. 
+If you need to install additional R packages for your RStudio environment, try installing them directly in RStudio first. If you encounter any errors, you can modify the rstudio-hpc.def file and rebuild the image.
 
 ## Changes Made
 Modified `rstudio-hpc.def` for additional package
