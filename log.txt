@@ -1,15 +1,15 @@
 
---- Wed Jun 18 12:33:41 PDT 2025 ---
+--- Wed Jun 18 13:59:48 PDT 2025 ---
 1. SSH tunnel from your workstation using the following command:
 
-   ssh -L 8787:nodea0234:57717 asun@login03
+   ssh -L 8787:nodea0234:60888 asun@login03
 
    and point your web browser to http://localhost:8787
 
 2. log in to RStudio Server using the following credentials:
 
    user: asun
-   password: qnH4K0GNTC9DOEBvMoxY
+   password: 0+82b0VEfsdPCLtBY4oU
 
 When done using RStudio Server, terminate the job by:
 
