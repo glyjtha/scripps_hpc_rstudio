@@ -51,3 +51,6 @@ If you have trouble building the singularity image, you can copy from my reposit
     - Note, modify the `#SBATCH` tags to request different number of CPUs and RAMs.
 4. Check out the `log.txt` for tunnel access and username/password.
 
+## Known Issues
+libRlapack.so / LD_LIBRARY_PATH compilers missing; run install.packages("RSpectra", type = "source", configure.args = "--with-r-lapack")
+missing dependencies; run install.packages("pak"), pak::pkg_install("Seurat")
