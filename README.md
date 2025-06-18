@@ -54,3 +54,4 @@ If you have trouble building the singularity image, you can copy from my reposit
 ## Known Issues
 libRlapack.so / LD_LIBRARY_PATH compilers missing; run install.packages("RSpectra", type = "source", configure.args = "--with-r-lapack")
 missing dependencies; run install.packages("pak"), pak::pkg_install("Seurat")
+EnhancedVolcano requires R >4.5
