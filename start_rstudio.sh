@@ -5,7 +5,7 @@
 #SBATCH --cpus-per-task=8  # number of cores
 #SBATCH --mem-per-cpu=8G   # memory per CPU core
 #SBATCH --error="r_studio.err"   # error log
-
+#SBATCH --partition="highmem"
 # File       : start_rstudio.sh
 # Created    : Sat Mar 2 2024 10:03:57 AM
 # Author     : Renhao Luo
@@ -24,7 +24,7 @@ echo "ssh -L 8787:${HOSTNAME}:${PORT} ${USER}@login03"
 echo "user: ${USER}"
 echo "password: ${PASSWORD}"
 
-cat >> ${HOME}/scripps_hpc_rstudio/log.txt << END
+cat > ${HOME}/scripps_hpc_rstudio/log.txt << END
 
 --- `date` ---
 1. SSH tunnel from your workstation using the following command:
@@ -87,7 +87,7 @@ singularity exec \
    --bind="$TMPDIR/var/lib:/var/lib/rstudio-server" \
    --bind="$TMPDIR/var/run:/var/run/rstudio-server" \
    --bind="$TMPDIR/tmp:/tmp" \
-   --bind="/gpfs/group/jin:/mnt/jin" \
+   --bind="/gpfs/group/jin:/gpfs/group/jin" \
    ${HOME}/scripps_hpc_rstudio/rstudio-hpc-v3.sif bash -c "\
    rserver --www-port ${PORT} --auth-none=0 --auth-pam-helper-path=pam-helper \
    --auth-timeout-minutes=0 --auth-stay-signed-in-days=30 --server-user ${USER} \
