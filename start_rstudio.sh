@@ -84,10 +84,11 @@ mkdir -p ${TMPDIR}/var/run
 # you can use --bind [-B] to bind other file systems
 
 singularity exec \
-   --bind="$TMPDIR/var/lib:/var/lib/rstudio-server" \
-   --bind="$TMPDIR/var/run:/var/run/rstudio-server" \
-   --bind="$TMPDIR/tmp:/tmp" \
-   --bind="/gpfs/group/jin:/gpfs/group/jin" \
+   --bind "$TMPDIR/var/lib:/var/lib/rstudio-server" \
+   --bind "$TMPDIR/var/run:/var/run/rstudio-server" \
+   --bind "$TMPDIR/tmp:/tmp" \
+   --bind /mnt/jin:/mnt/jin \
+   --bind /gpfs/group/jin:/gpfs/group/jin \
    ${HOME}/scripps_hpc_rstudio/rstudio-hpc-v3.sif bash -c "\
    rserver --www-port ${PORT} --auth-none=0 --auth-pam-helper-path=pam-helper \
    --auth-timeout-minutes=0 --auth-stay-signed-in-days=30 --server-user ${USER} \
